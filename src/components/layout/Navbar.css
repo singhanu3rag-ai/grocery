@@ -89,9 +89,27 @@
 }
 
 /* Mobile Responsive */
+.search-bar {
+    display: none;
+    /* Hide search on mobile for now */
+}
+}
+
+/* User Profile */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.user-name {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
 @media (max-width: 768px) {
-    .search-bar {
+    .user-name {
         display: none;
-        /* Hide search on mobile for now */
     }
 }

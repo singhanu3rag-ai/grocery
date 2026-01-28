@@ -1,19 +1,20 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
-import Hero from './components/layout/Hero'
-import ProductList from './components/layout/ProductList'
 import CartDrawer from './components/layout/CartDrawer'
+import { AuthProvider } from './context/AuthContext'
+import Home from './pages/Home'
+import Login from './pages/Login'
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Navbar />
       <CartDrawer />
-      <main>
-        <Hero />
-        <ProductList />
-      </main>
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </AuthProvider>
   )
 }
 
