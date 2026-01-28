@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
+import { useNavigate } from 'react-router-dom'
 
 const AuthContext = createContext({})
 
@@ -8,6 +9,7 @@ export const useAuth = () => useContext(AuthContext)
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
 
     useEffect(() => {
         // Check active sessions and sets the user
@@ -17,9 +19,21 @@ export const AuthProvider = ({ children }) => {
         })
 
         // Listen for changes on auth state (logged in, signed out, etc.)
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
             setUser(session?.user ?? null)
             setLoading(false)
+
+            if (event === 'SIGNED_IN') {
+                // Remove the unsightly OAuth hash from the URL
+                if (window.location.hash && window.location.hash.includes('access_token')) {
+                    window.history.replaceState(null, '', window.location.pathname);
+                }
+
+                // If user is on the login page, redirect them to home
+                if (window.location.pathname === '/login') {
+                    navigate('/');
+                }
+            }
         })
 
         return () => subscription.unsubscribe()
