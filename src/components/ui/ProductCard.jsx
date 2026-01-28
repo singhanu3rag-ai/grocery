@@ -19,7 +19,7 @@ const ProductCard = ({ product, onAdd }) => {
             <div className="product-details">
                 <div className="product-header">
                     <h3 className="product-name">{product.name}</h3>
-                    <span className="product-price">${product.price.toFixed(2)}</span>
+                    <span className="product-price">₹{product.price.toFixed(2)}</span>
                 </div>
                 <p className="product-description">{product.description}</p>
                 <div className="product-footer">

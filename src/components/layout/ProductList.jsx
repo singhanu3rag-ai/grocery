@@ -6,11 +6,18 @@ import './ProductList.css';
 
 const ProductList = () => {
     const [activeCategory, setActiveCategory] = useState('all');
-    const { addToCart } = useCart();
+    const { addToCart, searchQuery } = useCart();
 
-    const filteredProducts = activeCategory === 'all'
-        ? products
-        : products.filter(p => p.category === activeCategory);
+    const filteredBySearch = products.filter(item =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    // If searching, show all matching results regardless of category
+    // If not searching, filter by active category
+    const filteredProducts = searchQuery.length > 0
+        ? filteredBySearch
+        : (activeCategory === 'all' ? products : products.filter(p => p.category === activeCategory));
 
     return (
         <section className="product-section container" id="shop">

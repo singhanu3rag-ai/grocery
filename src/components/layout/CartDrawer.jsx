@@ -6,9 +6,9 @@ import './CartDrawer.css';
 import emailjs from '@emailjs/browser';
 
 const CartDrawer = () => {
-    const { isCartOpen, toggleCart, cartItems, updateQuantity, removeFromCart, cartTotal, clearCart } = useCart();
+    const { isCartOpen, toggleCart, cartItems, updateQuantity, removeFromCart, cartTotal, clearCart, setOrderSuccessOpen } = useCart();
     const { user } = useAuth();
-    const [view, setView] = useState('cart'); // 'cart', 'checkout', 'success'
+    const [view, setView] = useState('cart'); // 'cart', 'checkout'
 
     // Checkout form state
     const [formData, setFormData] = useState({
@@ -35,7 +35,7 @@ const CartDrawer = () => {
         setIsSending(true);
 
         const orderId = '#ORD-' + Math.floor(100000 + Math.random() * 900000);
-        const orderSummary = cartItems.map(item => `${item.name} x ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`).join('\n');
+        const orderSummary = cartItems.map(item => `${item.name} x ${item.quantity} - ₹${(item.price * item.quantity).toFixed(2)}`).join('\n');
 
         const templateParams = {
             order_id: orderId,
@@ -72,14 +72,14 @@ const CartDrawer = () => {
 
             console.log('Emails sent successfully!');
             clearCart();
-            setView('success');
+            toggleCart(); // Close drawer
+            setOrderSuccessOpen(true); // Open global success modal
         } catch (error) {
             console.error('Failed to send email:', error);
-            // Even if email fails, we might still want to show success if the order technically "placed" locally?
-            // For now, let's treat it as success but maybe alert? 
-            // Better UX: Show success but maybe log it. The user gets the product anyway.
+            // Treat as success for better UX
             clearCart();
-            setView('success');
+            toggleCart(); // Close drawer
+            setOrderSuccessOpen(true); // Open global success modal
         } finally {
             setIsSending(false);
         }
@@ -104,7 +104,6 @@ const CartDrawer = () => {
                     <h3>
                         {view === 'cart' && `Your Cart (${cartItems.length})`}
                         {view === 'checkout' && 'Checkout'}
-                        {view === 'success' && 'Order Placed!'}
                     </h3>
                     <button className="close-btn" onClick={closeDrawer}>×</button>
                 </div>
@@ -124,7 +123,7 @@ const CartDrawer = () => {
                                         <img src={item.image} alt={item.name} className="cart-item-img" />
                                         <div className="cart-item-details">
                                             <h4>{item.name}</h4>
-                                            <p>${item.price.toFixed(2)}</p>
+                                            <p>₹{item.price.toFixed(2)}</p>
                                             <div className="quantity-controls">
                                                 <button onClick={() => updateQuantity(item.id, -1)}>-</button>
                                                 <span>{item.quantity}</span>
@@ -146,7 +145,7 @@ const CartDrawer = () => {
                             <div className="cart-footer">
                                 <div className="cart-total">
                                     <span>Total:</span>
-                                    <span>${cartTotal.toFixed(2)}</span>
+                                    <span>₹{cartTotal.toFixed(2)}</span>
                                 </div>
                                 <Button size="lg" className="checkout-btn" onClick={() => setView('checkout')}>
                                     Proceed to Checkout
@@ -208,15 +207,15 @@ const CartDrawer = () => {
                             <div className="payment-summary">
                                 <div className="payment-row">
                                     <span>Subtotal</span>
-                                    <span>${cartTotal.toFixed(2)}</span>
+                                    <span>₹{cartTotal.toFixed(2)}</span>
                                 </div>
                                 <div className="payment-row">
                                     <span>Delivery Fee</span>
-                                    <span>$0.00</span>
+                                    <span>₹0.00</span>
                                 </div>
                                 <div className="payment-row total">
                                     <span>Total (Cash on Delivery)</span>
-                                    <span>${cartTotal.toFixed(2)}</span>
+                                    <span>₹{cartTotal.toFixed(2)}</span>
                                 </div>
                             </div>
 
@@ -230,15 +229,7 @@ const CartDrawer = () => {
                     </div>
                 )}
 
-                {view === 'success' && (
-                    <div className="success-container">
-                        <div className="success-icon">🎉</div>
-                        <h4>Order Placed Successfully!</h4>
-                        <p>We've sent a confirmation email to {formData.email}.</p>
-                        <p>Your order will be delivered in 10 minutes.</p>
-                        <Button onClick={closeDrawer}>Continue Shopping</Button>
-                    </div>
-                )}
+
             </div>
         </>
     );

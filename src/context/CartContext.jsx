@@ -42,6 +42,9 @@ export const CartProvider = ({ children }) => {
         });
     };
 
+    const [isOrderSuccessOpen, setOrderSuccessOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+
     // Derived state
     const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
     const cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -57,7 +60,12 @@ export const CartProvider = ({ children }) => {
             cartCount,
             cartTotal,
             isCartOpen,
-            toggleCart
+            toggleCart,
+            clearCart: () => setCartItems([]),
+            isOrderSuccessOpen,
+            setOrderSuccessOpen,
+            searchQuery,
+            setSearchQuery
         }}>
             {children}
         </CartContext.Provider>

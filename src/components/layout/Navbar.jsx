@@ -8,7 +8,7 @@ import './Navbar.css';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
-    const { cartCount, toggleCart } = useCart();
+    const { cartCount, toggleCart, searchQuery, setSearchQuery } = useCart();
     const { user, signOut } = useAuth();
     const navigate = useNavigate();
 
@@ -32,8 +32,14 @@ const Navbar = () => {
 
                 {/* Search Bar */}
                 <div className="search-bar">
-                    <input type="text" placeholder="Search for 'milk', 'chips'..." />
-                    <button className="search-btn">🔍</button>
+                    <input
+                        type="text"
+                        placeholder="Search for 'milk', 'chips'..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        id="search-input"
+                    />
+                    <button className="search-btn" onClick={() => document.getElementById('search-input').focus()}>🔍</button>
                 </div>
 
                 {/* Actions */}
