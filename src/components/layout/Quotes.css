@@ -1,0 +1,38 @@
+.quotes-section {
+    padding: var(--spacing-2xl) var(--spacing-md);
+    background-color: var(--color-bg-body);
+}
+
+.quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.quote-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition-base);
+}
+
+.quote-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: var(--font-size-lg);
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-md);
+}
+
+.quote-author {
+    font-weight: 600;
+    color: var(--color-primary);
+}

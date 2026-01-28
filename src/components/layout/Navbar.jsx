@@ -27,7 +27,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="logo">
                     <span className="logo-icon">🥬</span>
-                    <span className="logo-text">Fresh<span className="highlight">Cart</span></span>
+                    <span className="logo-text">Don<span className="highlight">Delivers</span></span>
                 </div>
 
                 {/* Search Bar */}

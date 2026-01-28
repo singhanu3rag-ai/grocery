@@ -13,7 +13,7 @@ export const products = [
         name: "Fresh Spinach (Palak)",
         category: "vegetables",
         price: 0.99,
-        image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1596541223130-5d31a73fb6c6?w=600&auto=format&fit=crop&q=60",
         description: "Organic fresh spinach leaves, rich in iron."
     },
     {
@@ -21,7 +21,7 @@ export const products = [
         name: "Red Tomatoes",
         category: "vegetables",
         price: 1.49,
-        image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1518977676321-ed31c8ad0353?w=600&auto=format&fit=crop&q=60",
         description: "Juicy, ripe red tomatoes perfect for salads."
     },
     {
@@ -29,7 +29,7 @@ export const products = [
         name: "Broccoli",
         category: "vegetables",
         price: 2.29,
-        image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=600&auto=format&fit=crop&q=60",
         description: "Fresh green broccoli florets."
     },
 
@@ -39,7 +39,7 @@ export const products = [
         name: "Bananas (Robusta)",
         category: "fruits",
         price: 0.69,
-        image: "https://images.unsplash.com/photo-1571771896612-9da8478181e3?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=600&auto=format&fit=crop&q=60",
         description: "Sweet and high energy bananas."
     },
     {
@@ -47,7 +47,7 @@ export const products = [
         name: "Strawberries",
         category: "fruits",
         price: 3.99,
-        image: "https://images.unsplash.com/photo-1464965911861-746a04b4b0ae?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1529125301389-c45474705574?w=600&auto=format&fit=crop&q=60",
         description: "Hand-picked fresh red strawberries."
     },
     {
@@ -55,7 +55,7 @@ export const products = [
         name: "Green Apples",
         category: "fruits",
         price: 2.49,
-        image: "https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1588665042220-379e96f1d2df?w=600&auto=format&fit=crop&q=60",
         description: "Crunchy and sweet green apples."
     },
 
@@ -65,7 +65,7 @@ export const products = [
         name: "Fresh Milk",
         category: "dairy",
         price: 1.20,
-        image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&auto=format&fit=crop&q=60",
         description: "Pure cow milk, pasteurized."
     },
     {
@@ -73,7 +73,7 @@ export const products = [
         name: "Whole Wheat Bread",
         category: "dairy",
         price: 1.99,
-        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1555465083-ef3a09800fc4?w=600&auto=format&fit=crop&q=60",
         description: "Freshly baked whole wheat bread."
     },
 
@@ -83,7 +83,7 @@ export const products = [
         name: "Potato Chips",
         category: "snacks",
         price: 1.50,
-        image: "https://images.unsplash.com/photo-1566478949033-69c06117713e?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1566478949033-69c06117713e?w=600&auto=format&fit=crop&q=60",
         description: "Classic salted potato crisps."
     },
     {
@@ -91,7 +91,7 @@ export const products = [
         name: "Chocolate Cookies",
         category: "snacks",
         price: 2.99,
-        image: "https://images.unsplash.com/photo-1499636138143-bd630f5cf38b?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1499636138143-bd630f5cf38b?w=600&auto=format&fit=crop&q=60",
         description: "Rich chocolate chip cookies."
     }
 ];
